@@ -1,0 +1,41 @@
+scalar GraphQlDate
+
+type employee {
+    id: Int,
+    firstName: String,
+    lastName: String,
+    age: Int,
+    dateOfJoining: GraphQlDate,
+    title: String,
+    dept: String,
+    empType: String,
+    currentStatus: Boolean,
+    timeLeftUntilRetirement:timeLeft,
+    ageAtJoining: Int
+    retirementDate: String
+}
+type timeLeft {
+  days:Int,months:Int,years:Int
+}
+type Query {
+    listofEmp(empType:String!): [employee],
+    empDetalis(id:Int!):employee
+
+}
+
+type Mutation {
+  createEmp(input: handleInput): employee,
+  editEmp(id: Int! ,  title: String!, department: String!,currentStatus: Boolean!,): employee
+  removeEmp(id: Int!): String!
+}
+
+input handleInput {
+  firstName: String,
+  lastName: String,
+  age: Int,
+  dateOfJoining: GraphQlDate,
+  title: String,
+  dept: String,
+  empType: String,
+  currentStatus: Boolean
+}
